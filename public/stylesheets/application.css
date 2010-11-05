@@ -121,8 +121,8 @@ html { -webkit-font-smoothing: antialiased; }
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
 
-a, a:link, a:active, a:visited { color:#86B8D3; text-decoration: none; }
-a:hover { color:#90C5E2; text-decoration: underline; }
+a, a:link, a:active, a:visited { color:#6DB9E2; text-decoration: none; }
+a:hover { color:#4EAEE2; text-decoration: underline; }
 
 
 ul { margin-left:30px; }
@@ -159,11 +159,11 @@ label, input[type=button], input[type=submit], button { cursor: pointer; }
 /* These selection declarations have to be separate.
    No text-shadow: twitter.com/miketaylr/status/12228805301 
    Also: hot pink. */
-::-moz-selection{ background: #90C5E2; color:#FFF; text-shadow: none; }
-::selection { background:#90C5E2; color:#FFF; text-shadow: none; } 
+::-moz-selection{ background: #4EAEE2; color:#FFF; text-shadow: none; }
+::selection { background:#4EAEE2; color:#FFF; text-shadow: none; } 
 
 /*  j.mp/webkit-tap-highlight-color */
-a:link { -webkit-tap-highlight-color: #90C5E2; } 
+a:link { -webkit-tap-highlight-color: #4EAEE2; } 
 
 
 /* always force a scrollbar in non-IE */
@@ -244,12 +244,12 @@ header a:hover {
 
 header span {
   background: #FFF;
-  border-bottom: 3px solid #90C5E2;
+  border-bottom: 3px solid #4EAEE2;
   padding: 5px;
 }
 
 header div.flash {
-  background: #90C5E2;
+  background: #4EAEE2;
   border-top: 3px solid #FFF;
   color: #FFF;
   cursor: pointer;
@@ -362,25 +362,27 @@ ul li:first-child {
   margin-top: 0;
 }
 
-ul.navigation li {
+nav ul li {
+	-webkit-transition: padding-left 0.25s ease-in;
   background: #FFF;
   border-right: 3px solid #FFF;
   padding: 3px 0 3px 5px;
 }
 
-ul.navigation li:first-child {
+nav ul li:first-child {
   margin-top: 0px;
 }
 
-ul.navigation li:hover {
-  -webkit-transition-property: background, border-right;
+nav ul li:hover {
+  -webkit-transition-property: background, border-right, padding-left;
   -webkit-transition-duration: 0.25s;
   -webkit-transition-timing-function: ease-in;
   background: #F6F6F6;
-  border-right: 3px solid #90C5E2;
+  border-right: 3px solid #4EAEE2;
+	padding-left: 10px;
 }
 
-ul.navigation li a:hover {
+nav ul li a:hover {
   text-decoration: none;
 }
 
