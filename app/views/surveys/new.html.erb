@@ -1,0 +1,13 @@
+<h2>Create a New Survey</h2>
+<br />
+<%= form_for [@user, @survey] do |f| -%>
+  <%= render :partial => 'surveys/form', :locals => { :f => f } %>
+  <div class="form_button_cluster">
+    <span><%= f.submit "Create" %></span>
+    <span><%= link_to "Cancel", surveys_path%></span>
+  </div>
+  <div class="clearfix"></div>
+  
+<% end -%>
+
+

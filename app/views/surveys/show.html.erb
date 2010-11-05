@@ -1,0 +1,23 @@
+<h2><%=h @survey.title %></h2>
+<div class="subhead">
+  <%= link_to "Sections", survey_sections_path(@survey) %> &middot; 
+  <%= link_to "Edit", edit_survey_path(@survey), :class => 'alt' %> &middot; 
+  <%= link_to "Delete", confirm_delete_survey_path(@survey), :class => 'alt' %>
+</div>
+
+<h3>Attributes</h3>
+<dl class="attributes split_20_80">
+  <dt>Title</dt>
+  <dd><%=h @survey.title %></dd>
+  
+  <%- unless @survey.description.blank? %>
+    <dt>Description</dt>
+    <dd><%=h @survey.description %></dd>
+  <%- end %>
+  
+  <dt>API key</dt>
+  <dd><%=h @survey.api_key %></dd>
+  
+  <dt>Last changed</dt>
+  <dd><%=h @survey.updated_at.localtime.strftime("%D, %l:%M %p (%Z)") %></dd>
+</dl>

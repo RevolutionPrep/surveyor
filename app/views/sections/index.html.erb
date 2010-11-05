@@ -1,0 +1,31 @@
+<h2>Sections</h2>
+<div class="subhead">
+  Sections contain questions and can have their own titles and descriptions. &middot; 
+  <%= link_to "Create a section", new_survey_section_path(@survey) %>
+</div>
+<% if @sections.empty? %>
+  <div class="module">
+    <em>You don't have any sections. You can add a section by clicking 'Create a section' above.</em>
+  </div>
+<% else %>
+  <table class="default">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th><nobr>Number of questions</nobr></th>
+      <th class="action"><nobr>Last Updated</nobr></th>
+      <th class="action">&nbsp;</th>
+      <th class="action">&nbsp;</th>
+    </tr>
+    <% @sections.each do |section| %>
+      <tr>
+        <td><%= link_to h(section.title).nobr, section_path(section) %></td>
+        <td><%=h section.description %></td>
+        <td><%= section.questions.empty? ? "None" : section.questions.length %></td>
+        <td><%=h section.updated_at.strftime('%D') %></td>
+        <td><%= link_to "Edit", edit_section_path(section) %></td>
+        <td><%= link_to "Delete", confirm_delete_section_path(section) %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

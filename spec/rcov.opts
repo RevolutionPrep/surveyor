@@ -1,0 +1,2 @@
+--exclude "spec/*,gems/*,features/*,features_coverage/*"
+--rails

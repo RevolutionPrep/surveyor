@@ -1,0 +1,14 @@
+<p>Welcome to Surveyor, the Revolution Prep Survey Development and Analysis Tool.</p>
+<br />
+<h3>Please enter your login information.</h3>
+<%= form_for(@user_session) do |f| %>
+<%= f.error_messages %>
+<dl>
+  <dt><%= f.label :username %></dt>
+  <dd><%= f.text_field :username, :size => 20 %></dd>
+
+  <dt><%= f.label :password %></dt>
+  <dd><%= f.password_field :password, :size => 20 %></dd>
+
+  <%= f.submit 'Login' %>
+<% end %> 

@@ -1,0 +1,38 @@
+<p><%= link_to question.position, '#' %></p>
+<p>
+  <%=h question.statement %>
+  <% if question.required %>
+    (required)
+  <% end %>
+</p>
+<% question.components.each do |component| %>
+  <p>
+    <% if question.multiple_answers %>
+      <%= check_box_tag "check_box_preview", false, {}, :class => 'check_box_component' %> <%=h component.value %>
+    <% else %>
+      <%= radio_button_tag "radio_button_preview", true, {}, :class => 'radio_button_component' %> <%=h component.value %>
+    <% end %>
+  </p>
+<% end %>
+
+<% if question.comment_field %>
+  <p>
+    <% if question.use_comment_as_answer %>
+      <% if question.multiple_answers %>
+        <%= check_box_tag "check_box_preview", false, {}, :class => 'check_box_component' %>
+      <% else %>
+        <%= radio_button_tag "radio_button_preview", true, {}, :class => 'radio_button_component' %>
+      <% end %>
+      <%= label_tag "Other (please specify):" %>
+    <% else %>
+      <%= label_tag h(question.comment_field_description) %>
+    <% end %>
+    <%= text_area_tag "comment_field_preview", {}, :class => 'comment_field' %>
+  </p>
+<% end %>
+  <p>
+    <%= link_to "Delete", confirm_delete_section_question_path(question.section,question), :id => "delete_question_#{question.position}", :class => "blue" %>
+  </p>
+  <p>
+    <%= link_to "Edit", edit_section_question_path(question.section,question), :id => "edit_question_#{question.position}", :class => "blue" %>
+  </p>

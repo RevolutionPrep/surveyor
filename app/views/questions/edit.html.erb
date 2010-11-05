@@ -1,0 +1,20 @@
+<h2>Editing a Survey Question</h2>
+<br />
+<%= form_for [@question.becomes(Question)] do |f| -%>
+  <%= f.error_messages %>
+  <%= render :partial => 'edit_form', :locals => { :f => f } %>
+  <% case @question.type
+     when "MultipleChoiceQuestion" %>
+       <%= render :partial => 'components_form', :locals => { :f => f } %><br />
+       <%= render :partial => 'mc_options_form', :locals => { :f => f } %>
+  <% when "ShortAnswerQuestion" %>
+       <%= render :partial => 'sa_options_form', :locals => { :f => f } %>
+  <% when "RatingQuestion" %>
+       <%= render :partial => 'rating_options_form', :locals => { :f => f } %>
+  <% end %>
+  <br />
+  <div class="form_button_cluster">
+    <span><%= f.submit "Update" %></span>
+    <span><%= link_to "Cancel", question_path(@question) %></span>
+  </div>
+<% end -%>

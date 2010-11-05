@@ -1,0 +1,29 @@
+<h2><%= @rating_scale.name %></h2>
+
+<%= form_for @rating_scale do |f| %>
+  <% @rating_scale.rating_labels.each do |rating_label| %>
+    <%= fields_for_rating_label(rating_label) do |ff| %>
+      <dl class="module">
+        <dt><%= ff.label :key %></dt>
+        <dd><%= ff.text_field :key, :size => 20 %></dd>
+        <dt><%= ff.label :value %></dt>
+        <dd><%= ff.text_field :value, :size => 4 %></dd>
+        <% unless rating_label.new_record? %>
+          <%= link_to "Delete", confirm_delete_rating_label_path(rating_label) %>
+        <% end %>
+      </dl>
+      <%- unless @rating_scale.rating_labels.last == rating_label %>
+        <br />
+      <%- end %>
+    <% end %>
+  <% end %>
+  <div class="form_button_cluster">
+    <span><%= f.submit "Add Label" %></span>
+  </div>
+  <br />
+  <br />
+  <div class="form_button_cluster">
+    <span><%= f.submit "Update" %></span>
+    <span><%= link_to "Cancel", rating_scale_path(@rating_scale) %></span>
+  </div>
+<% end %>

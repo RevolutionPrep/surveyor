@@ -1,0 +1,37 @@
+<h2><%=h @question.statement %></h2>
+<div class="subhead">
+  <%= link_to "Edit", edit_question_path(@question) %> &middot; 
+  <%= link_to "Delete", confirm_delete_question_path(@question) %>
+</div>
+
+<% case @question.type
+   when "MultipleChoiceQuestion" %>
+     <%= render :partial => 'mc_preview' %>
+<% when "ShortAnswerQuestion" %>
+     <%= render :partial => 'sa_preview' %>
+<% when "RatingQuestion" %>
+     <%= render :partial => 'rating_preview' %>
+<% end %>
+
+<br />
+
+<h3>Attributes</h3>
+<dl class="attributes split_20_80">
+  <dt>Statement</dt>
+  <dd><%= @question.statement %></dd>
+  
+  <dt>Type</dt>
+  <dd><%= @question.type_as_string %></dd>
+  
+  <dt>Allows for multiple answers?</dt>
+  <dd><%= @question.multiple_answers.to_s.capitalize %></dd>
+  
+  <dt>Is a required question?</dt>
+  <dd><%= @question.required.to_s.capitalize %></dd>
+  
+  <dt>Unique identifier</dt>
+  <dd><%= @question.handle %></dd>
+  
+  <dt>Last changed</dt>
+  <dd><%= @question.updated_at.localtime.strftime("%D, %l:%M %p (%Z)") %></dd>
+</dl>

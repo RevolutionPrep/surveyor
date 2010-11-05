@@ -1,0 +1,52 @@
+<div class="module warning">
+  <p>Are you sure you want to delete this question?</p>
+  <div class="form_button_cluster">
+    <span><%= button_to "Delete", question_path(@question), :method => :delete %></span>
+    <span><%= link_to "Cancel", section_questions_path(@question.section) %></span>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<br />
+
+<span class="right"><%=h @question.updated_at.strftime('%D') %></span>
+<h2><%=h @question.statement %></h2>
+<div class="module">
+  <p>
+    <% if @question.required %>
+      <i>(This question is required)</i>
+    <% end %>
+  </p>
+  <% if @question.type == "MultipleChoiceQuestion" %>
+    <% @question.components.each do |component| %>
+      <% unless component.new_record? %>
+        <% if @question.multiple_answers %>
+          <%= check_box_tag "#", "#", true, :disabled => true %>
+        <% else %>
+          <%= radio_button_tag "#", "#", false, :disabled => true %>
+        <% end %>
+        <%=h component.value %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% if @question.type == "RatingQuestion" %>
+    <% @question.rating_scale.rating_labels.each do |rating_label| %>
+      <% if @question.multiple_answers %>
+        <%= check_box_tag "#", "#", true, :disabled => true %>
+      <% else %>
+        <%= radio_button_tag "#", "#", false, :disabled => true %>
+      <% end %>
+      <%=h rating_label.key %>
+    <% end %>
+  <% end %>
+  <% if @question.type == "ShortAnswerQuestion" %>
+    <%= text_area_tag "", {}, :rows => 8, :cols => 40 %>
+  <% end %>
+  <% if @question.user_entered_answer %>
+    <% if @question.multiple_answers %>
+      <%= check_box_tag "#", "#", true, :disabled => true %>
+    <% else %>
+      <%= radio_button_tag "#", "#", false, :disabled => true %>
+    <% end %>
+    <%= text_field_tag "#" %>
+  <% end %>
+</div>

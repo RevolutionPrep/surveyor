@@ -1,0 +1,12 @@
+<h2>Editing Survey Section</h2>
+<br />
+<%= form_for [@survey,@section] do |f| -%>
+  <%= render :partial => 'sections/form', :locals => { :f => f } %>
+
+  
+  <div class="form_button_cluster">
+    <span><%= f.submit "Update" %></span>
+    <span><%= link_to "Cancel", section_path(@section) %></span>
+  </div>
+  <div class="clearfix"></div>
+<% end -%>

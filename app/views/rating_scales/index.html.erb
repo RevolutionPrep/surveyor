@@ -1,0 +1,25 @@
+<h2>Rating Scales</h2>
+<div class="subhead">
+  <%= link_to "Create a scale", new_rating_scale_path %> &middot; 
+  <%= link_to "Back to question", edit_question_path(@question) if @question %>
+</div>
+<% if @rating_scales.empty? %>
+  <p>You don't have any rating scales.  You can add scales by clicking the 'New Scale' link above or below.</p>
+<% else %>
+  <table class="default">
+    <tr>
+      <th>Name</th>
+      <th class="action"><nobr>Last Updated</nobr></th>
+      <th class="action">&nbsp;</th>
+      <th class="action">&nbsp;</th>
+    </tr>
+    <% @rating_scales.each do |rating_scale| %>
+      <tr>
+        <td><%= link_to h(rating_scale.name), rating_scale_path(rating_scale) %></td>
+        <td><%=h rating_scale.updated_at.strftime('%D') %></td>
+        <td><%= link_to "Edit", edit_rating_scale_path(rating_scale) %></td>
+        <td><%= link_to "Delete", confirm_delete_rating_scale_path(rating_scale) %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

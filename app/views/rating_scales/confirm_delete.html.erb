@@ -1,0 +1,34 @@
+<div class="module warning">
+  <% if @surveys.empty? %>
+    <p>Are you sure you want to delete this rating scale?</p>
+    <div class="form_button_cluster">
+      <span><%= button_to "Delete", rating_scale_path(@rating_scale), :method => :delete %></span>
+      <span><%= link_to "Cancel", rating_scales_path %></span>
+    </div>
+  <% else %>
+    <p>Deletion of this rating scale is not allowed while it is still in use by the following surveys:</p>
+    <ul>
+    <% @surveys.each do |survey| %>
+      <li><%= link_to h(survey.title), survey_path(survey) %></li>
+    <% end %>
+    </ul>
+    <div class="form_button_cluster">
+      <span><%= link_to "Cancel", rating_scales_path %></span>
+    </div>
+  <% end %>
+  <div class="clearfix"></div>
+</div>
+<br />
+
+<span class="right"><%=h @rating_scale.updated_at.strftime('%D') %></span>
+<h2><%=h @rating_scale.name %></h2>
+<div class="module">
+  <%- unless @rating_scale.rating_labels.empty? %>
+    <h4>Rating Labels</h4>
+    <ul>
+    <% @rating_scale.rating_labels.each do |rating_label| %>
+      <li><%=h rating_label.key %> (<%=h rating_label.value %>)</li>
+    <% end %>
+    </ul>
+  <%- end %>
+</div>

@@ -1,0 +1,12 @@
+<div class="module warning">
+  <p>Are you sure you want to delete this rating label?</p>
+  <div class="form_button_cluster">
+    <span><%= button_to "Delete", rating_label_path(@rating_label), :method => :delete %></span>
+    <span><%= link_to "Cancel", edit_rating_scale_path(@rating_label.rating_scale) %></span>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<br />
+
+<span class="right"><%=h @rating_label.updated_at.strftime('%D') %></span>
+<h2><%=h @rating_label.key %></h2>

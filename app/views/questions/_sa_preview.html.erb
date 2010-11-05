@@ -1,0 +1,10 @@
+<h3>Preview</h3>
+
+<div class="module">
+  <%=h @question.statement %>
+  <% if @question.required %>
+    <i>(This question is required)</i>
+  <% end %>
+  <br />
+  <%= text_area_tag "#", {}, :rows => 4, :cols => 40 %>
+</div>

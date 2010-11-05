@@ -1,0 +1,38 @@
+<div class="module warning">
+  <p>Are you sure you want to delete this answer choice?</p>
+  <div class="form_button_cluster">
+    <span><%= button_to "Delete", component_path(@component), :method => :delete %></span>
+    <span><%= link_to "Cancel", edit_question_path(@component.question) %></span>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<br />
+
+<span class="right"><%=h @component.updated_at.strftime("%D") %></span>
+<h2><%=h @component.question.statement %></h2>
+<div class="module">
+  <p>
+    <%- if @component.question.required %>
+      <i>(This question is required)</i>
+    <%- end %>
+  </p>
+  <% @component.question.components.each do |component| %>
+    <%- unless component.new_record? %>
+      <%- if @component.question.multiple_answers %>
+        <%= check_box_tag "#", "#", true, :disabled => true %>
+      <%- else %>
+        <%= radio_button_tag "#", "#", false, :disabled => true %>
+      <%- end %>
+      <%=h component.value %>
+    <%- end %>
+  <%- end %>
+
+  <%- if @component.question.user_entered_answer %>
+    <%- if @component.question.multiple_answers %>
+      <%= check_box_tag "#", "#", true, :disabled => true %>
+    <%- else %>
+      <%= radio_button_tag "#", "#", false, :disabled => true %>
+    <%- end %>
+    <%= text_field_tag "#" %>
+  <%- end %>
+</div>

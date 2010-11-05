@@ -1,0 +1,23 @@
+<h3>Preview</h3>
+
+<div class="module">
+  <%=h @question.statement %>
+  <% if @question.required %>
+    <i>(This question is required)</i>
+  <% end %>
+  <br />
+  <% unless @question.rating_scale.blank? %>
+    <ul>
+      <% @question.rating_scale.rating_labels.each do |rating_label| %>
+        <li>
+          <% if @question.multiple_answers %>
+            <%= check_box_tag "option", rating_label.id, true, :disabled => true %>
+          <% else %>
+            <%= radio_button_tag "option", rating_label.id, false, :disabled => true %>
+          <% end %>
+          <%=h rating_label.key %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

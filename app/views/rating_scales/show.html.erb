@@ -1,0 +1,13 @@
+<h2><%=h @rating_scale.name %></h2>
+<div class="subhead">
+  <%= link_to "Edit", edit_rating_scale_path(@rating_scale) %> &middot; 
+  <%= link_to "Delete", confirm_delete_rating_scale_path(@rating_scale) %>
+</div>
+<%- unless @rating_scale.rating_labels.empty? %>
+  <h2>Preview</h2>
+  <ul class="module">
+    <%- @rating_scale.rating_labels.each do |rating_label| %>
+      <li><%= check_box_tag "#", "#", true, :disabled => true %> <%=h rating_label.key %></li>
+    <%- end %>
+  </ul>
+<%- end %>

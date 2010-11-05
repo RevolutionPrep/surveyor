@@ -1,0 +1,12 @@
+<%= f.error_messages %>
+
+<dl>
+  <dt><%= f.label :username %></dt>
+  <dd><%= f.text_field :username, :size => 20 %></dd>
+
+  <dt><%= f.label :password %></dt>
+  <dd><%= f.password_field :password, :size => 20 %></dd>
+
+  <dt><%= f.label :password_confirmation, "Confirm Password" %></dt>
+  <dd><%= f.password_field :password_confirmation, :size => 20 %></dd>
+</dl>

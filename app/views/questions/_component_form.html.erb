@@ -1,0 +1,11 @@
+<%= fields_for_component(component) do |f| %>
+  <dl>
+    <dt><%= f.label "Option #{component.position}" %></dt>
+    <dd>
+      <%= f.text_field :value, :size => 20, :id => "option_#{component.position}", :class => "component" %>
+      <% unless component.value.blank? %>
+        <%= link_to "Delete", confirm_delete_component_path(component) %>
+      <% end %>
+    </dd>
+  </dl>
+<% end %>

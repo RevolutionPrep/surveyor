@@ -1,0 +1,3 @@
+<p><%= link_to "Add", new_section_question_path(@section) %></p>
+<h3>Questions</h3>
+<%= render :partial => 'question', :collection => @section.questions %>

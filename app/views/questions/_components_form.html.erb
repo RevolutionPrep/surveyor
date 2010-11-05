@@ -1,0 +1,11 @@
+<h3>Answer Choices</h3>
+<div class="module">
+  <% if @question.components.empty? %>
+    Answer choices can be added here.
+  <% else %>
+    <% @question.components.each do |component| %>
+      <%= render :partial => "component_form", :locals => { :component => component } %>
+    <% end %>
+  <% end %>
+  <%= f.submit "Add" %>
+</div>

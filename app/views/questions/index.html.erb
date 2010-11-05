@@ -1,0 +1,29 @@
+<h2><%=h @section.title %></h2>
+<div class="subhead">
+  <%= link_to "Create a question", new_section_question_path(@section) %>
+</div>
+
+<% if @questions.empty? %>
+  <div class="module">
+    <em>You don't have any questions. You can add a question by clicking 'Create a question' above.</em>
+  </div>
+<% else %>
+  <table class="default">
+    <tr>
+      <th>Statement</th>
+      <th>Type</th>
+      <th class="action"><nobr>Last Updated</nobr></th>
+      <th class="action">&nbsp;</th>
+      <th class="action">&nbsp;</th>
+    </tr>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= link_to h(question.statement), question_path(question) %></td>
+        <td><%=h(question.type_as_string).nobr %></td>
+        <td><%=h question.updated_at.strftime('%D') %></td>
+        <td><%= link_to "Edit", edit_question_path(question) %></td>
+        <td><%= link_to "Delete", confirm_delete_question_path(question) %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

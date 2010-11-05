@@ -1,0 +1,10 @@
+<%= error_messages_for 'question' %>
+<dl>
+  <dt><%= f.label :type, "Please choose a type:" %></dt>
+  <dd>
+    <%= f.select :type, [["Multiple Choice","MultipleChoiceQuestion"],["Short Answer","ShortAnswerQuestion"],["Rating","RatingQuestion"]], :selected => @question.type.to_s %>
+  </dd>
+
+  <dt><%= f.label :statement, "Question:" %></dt>
+  <dd><%= f.text_area :statement, :rows => 4, :cols => 30 %></dd>
+</dl>

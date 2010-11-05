@@ -1,0 +1,13 @@
+<h2><%=h @section.title %></h2>
+<div class="subhead">
+  <%= link_to "Questions", section_questions_path(@section) %> &middot; 
+  <%= link_to "Edit", edit_section_path(@section) %> &middot; 
+  <%= link_to "Delete", confirm_delete_section_path(@section) %>
+</div>
+
+<dl class="attributes split_20_80">
+  <%- unless @section.description.blank? %>
+    <dt>Description</dt>
+    <dd><%=h @section.description %></dd>
+  <%- end %>
+</dl>

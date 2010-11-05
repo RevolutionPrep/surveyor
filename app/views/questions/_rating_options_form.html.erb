@@ -1,0 +1,15 @@
+<% if @user.rating_scales.empty? %>
+  <p>You currently don't have any rating scales. Add some by clicking 'Rating Scales' to the left.</p>
+<% else %>
+  <dl>
+    <dt><%= f.label :rating_scale_id, "Rating Scale:" %></dt>
+    <dd><%= f.collection_select :rating_scale_id, @user.rating_scales, :id, :name %></dd>
+  </dl>
+<% end %>
+
+<br />
+<h3>Options</h3>
+<ul class="module">
+  <li><%= f.check_box :multiple_answers %> <%= f.label :multiple_answers, "Allow multiple answers?" %></li>
+  <li><%= f.check_box :required %> <%= f.label :required, "Require answer?" %></li>
+</ul>

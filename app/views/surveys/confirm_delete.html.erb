@@ -1,0 +1,17 @@
+<div class="module warning">
+  <p>Are you sure you want to delete this survey?</p>
+  <div class="form_button_cluster">
+    <span><%= button_to "Delete", survey_path(@survey), :method => :delete %></span>
+    <span><%= link_to "Cancel", survey_path(@survey) %></span>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<br />
+
+<span class="right"><%=h @survey.updated_at.strftime('%D') %></span>
+<h2><%=h @survey.title %></h2>
+<%- unless @survey.description.blank? %>
+  <div class="module">
+    <p><%=h @survey.description %></p>
+  </div>
+<%- end %>

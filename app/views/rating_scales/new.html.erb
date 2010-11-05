@@ -1,0 +1,8 @@
+<h2>New Rating Scale</h2>
+<%= form_for @rating_scale do |f| -%>
+<%= render :partial => 'form', :locals => { :f => f } %>
+<div class="form_button_cluster">
+  <span><%= f.submit "Create" %></span>
+  <span><%= link_to "Cancel", rating_scales_path %></span>
+</div>
+<% end %>

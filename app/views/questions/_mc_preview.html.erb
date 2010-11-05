@@ -1,0 +1,35 @@
+<h3>Preview</h3>
+
+<div class="module">
+  <%=h @question.statement %>
+  <% if @question.required %>
+    <i>(This question is required)</i>
+  <% end %>
+  <br />
+  <% unless @question.components.empty? %>
+    <ul>
+      <% @question.components.each do |component| %>
+        <li>
+          <% unless component.new_record? %>
+            <% if @question.multiple_answers %>
+              <%= check_box_tag "option", component.id, true, :disabled => true %>
+            <% else %>
+              <%= radio_button_tag "option", component.id, false, :disabled => true %>
+            <% end %>
+            <%=h component.value %>
+          <% end %>
+        </li>
+      <% end %>
+      <% if @question.user_entered_answer %>
+        <li>
+          <% if @question.multiple_answers %>
+            <%= check_box_tag "#", "#", true, :disabled => true %>
+          <% else %>
+            <%= radio_button_tag "#", "#", false, :disabled => true %>
+          <% end %>
+          <%= text_field_tag "#" %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

@@ -1,0 +1,30 @@
+<h2>Surveys</h2>
+<div class="subhead">
+  These are your surveys. You can create, organize, and delete them from here. &middot; 
+  <%= link_to "Create a survey", new_survey_path %>
+</div>
+
+<% if @surveys.empty? %>
+  <div class="module">
+    <em>You don't have any current surveys.  You can add surveys by clicking 'Create a survey' above.</em>
+  </div>
+<% else %>
+  <table class="default">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th class="action"><nobr>Last Updated</nobr></th>
+      <th class="action">&nbsp;</th>
+      <th class="action">&nbsp;</th>
+    </tr>
+    <% @surveys.each do |survey| %>
+      <tr>
+        <td><%= link_to h(survey.title).nobr, survey_path(survey) %></td>
+        <td><%=h survey.description %></td>
+        <td><%=h survey.updated_at.strftime('%D') %></td>
+        <td><%= link_to "Edit", edit_survey_path(survey) %></td>
+        <td><%= link_to "Delete", confirm_delete_survey_path(survey) %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

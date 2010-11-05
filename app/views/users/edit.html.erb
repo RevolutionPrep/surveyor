@@ -1,0 +1,8 @@
+<h2>Editing <%=h @user.username %>'s Profile</h2>
+
+<%= form_for @user do |f| -%>
+<%= render :partial => 'users/form', :locals => { :f => f } %>
+<p>
+  <%= f.submit "Update" %>
+</p>
+<% end %>
