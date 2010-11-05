@@ -22,5 +22,6 @@ group :development, :test do
 end
 
 group :development do
+  gem 'mongrel', '>=1.2.0.pre2'
   gem 'awesome_print', '>=0.2.1'
 end
