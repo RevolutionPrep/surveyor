@@ -121,8 +121,8 @@ html { -webkit-font-smoothing: antialiased; }
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
 
-a, a:link, a:active, a:visited { color:#6DB9E2; text-decoration: none; }
-a:hover { color:#4EAEE2; text-decoration: underline; }
+a, a:link, a:active, a:visited { color:#537091; text-decoration: none; }
+a:hover { color:#36495E; text-decoration: underline; }
 
 
 ul { margin-left:30px; }
@@ -159,11 +159,11 @@ label, input[type=button], input[type=submit], button { cursor: pointer; }
 /* These selection declarations have to be separate.
    No text-shadow: twitter.com/miketaylr/status/12228805301 
    Also: hot pink. */
-::-moz-selection{ background: #4EAEE2; color:#FFF; text-shadow: none; }
-::selection { background:#4EAEE2; color:#FFF; text-shadow: none; } 
+::-moz-selection{ background: #36495E; color:#FFF; text-shadow: none; }
+::selection { background:#36495E; color:#FFF; text-shadow: none; } 
 
 /*  j.mp/webkit-tap-highlight-color */
-a:link { -webkit-tap-highlight-color: #4EAEE2; } 
+a:link { -webkit-tap-highlight-color: #36495E; } 
 
 
 /* always force a scrollbar in non-IE */
@@ -232,6 +232,7 @@ header a, header a:link, header a:active, header a:visited {
   border-bottom: 3px solid #EEE;
   margin-left: 5px;
   padding: 5px;
+  text-shadow: 1px 1px 0px #FFF;
 }
 
 header a:hover {
@@ -243,13 +244,15 @@ header a:hover {
 }
 
 header span {
-  background: #FFF;
-  border-bottom: 3px solid #4EAEE2;
+  background: #537091;
+  border-bottom: 3px solid #36495E;
+  color: #FFF;
   padding: 5px;
+  text-shadow: 1px 1px 0px #36495E;
 }
 
 header div.flash {
-  background: #4EAEE2;
+  background: #36495E;
   border-top: 3px solid #FFF;
   color: #FFF;
   cursor: pointer;
@@ -378,8 +381,12 @@ nav ul li:hover {
   -webkit-transition-duration: 0.25s;
   -webkit-transition-timing-function: ease-in;
   background: #F6F6F6;
-  border-right: 3px solid #4EAEE2;
+  border-right: 3px solid #36495E;
 	padding-left: 10px;
+}
+
+nav ul li:hover a {
+  color: #36495E;
 }
 
 nav ul li a:hover {
