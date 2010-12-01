@@ -266,6 +266,7 @@ header div.flash {
   bottom: 0;
   right: 0;
   padding: 3px 5px;
+  text-shadow: 1px 1px 0px #36495E;
   vertical-align: bottom;
 }
 
