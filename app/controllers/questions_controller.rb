@@ -3,17 +3,16 @@ class QuestionsController < ApplicationController
   before_filter :retrieve_user
   before_filter :retrieve_section, :only => [:index, :new, :create]
   before_filter :retrieve_question, :except => [:index, :new, :create]
+  before_render :set_breadcrumb
 
   def index
     @questions = @section.questions
-    @breadcrumb = @question.try(:becomes, Question) || @section
     respond_to do |format|
       format.html
     end
   end
   
   def show
-    @breadcrumb = @question.try(:becomes, Question) || @section
     respond_to do |format|
       format.html
     end
@@ -21,7 +20,6 @@ class QuestionsController < ApplicationController
 
   def new
     @question = @section.questions.new
-    @breadcrumb = @question.try(:becomes, Question) || @section
     respond_to do |format|
       format.html
     end
@@ -29,7 +27,6 @@ class QuestionsController < ApplicationController
   
   def edit
     session[:question_id] = @question.id
-    @breadcrumb = @question.try(:becomes, Question) || @section
     respond_to do |format|
       format.html
     end
@@ -40,10 +37,8 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @section.save
         flash[:notice] = "Question created."
-        @breadcrumb = @question.try(:becomes, Question) || @section
         format.html { redirect_to question_path(@question) }
       else
-        @breadcrumb = @question.try(:becomes, Question) || @section
         format.html { render :new }
       end
     end
@@ -63,22 +58,18 @@ class QuestionsController < ApplicationController
       when "Add"
         @question.update_attributes(params[:question])
         @question.components.build
-        @breadcrumb = @question.try(:becomes, Question) || @section
         format.html { render :edit }
       when "Remove"
         components = @question.components.find(params[:remove_component_ids])
         components.each do |component|
           component.destroy
         end
-        @breadcrumb = @question.try(:becomes, Question) || @section
         format.html { render :edit }
       else
         if @question.update_attributes(params[:question])
           flash[:notice] = "Question updated."
-          @breadcrumb = @question.try(:becomes, Question) || @section
           format.html { redirect_to question_path(@question) }
         else
-          @breadcrumb = @question.try(:becomes, Question) || @section
           format.html { render :edit }
         end
       end
@@ -88,7 +79,6 @@ class QuestionsController < ApplicationController
   def destroy
     @section = @question.section
     @question.destroy
-    @breadcrumb = @question.try(:becomes, Question) || @section
     respond_to do |format|
       flash[:notice] = "Question deleted."
       format.html { redirect_to section_path(@section) }
@@ -96,7 +86,6 @@ class QuestionsController < ApplicationController
   end
 
   def confirm_delete
-    @breadcrumb = @question.try(:becomes, Question) || @section
     respond_to do |format|
       format.html
     end
@@ -110,6 +99,10 @@ class QuestionsController < ApplicationController
     
     def retrieve_question
       @question = @user.questions.find(params[:id])
+    end
+    
+    def set_breadcrumb
+      @breadcrumb = @question.try(:becomes, Question) || @section
     end
 
 end

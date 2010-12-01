@@ -2,17 +2,16 @@ class SurveysController < ApplicationController
 
   before_filter :retrieve_user
   before_filter :retrieve_survey, :except => [:index, :new, :create]
+  before_render :set_breadcrumb
 
   def index
     @surveys = @user.surveys
-    @breadcrumb = @survey
     respond_to do |format|
       format.html
     end
   end
   
   def show
-    @breadcrumb = @survey
     respond_to do |format|
       format.html
     end
@@ -20,14 +19,12 @@ class SurveysController < ApplicationController
 
   def new
     @survey = @user.surveys.new
-    @breadcrumb = @survey
     respond_to do |format|
       format.html
     end
   end
   
   def edit
-    @breadcrumb = @survey
     respond_to do |format|
       format.html
     end
@@ -38,10 +35,8 @@ class SurveysController < ApplicationController
     respond_to do |format|
       if @survey.save
         flash[:notice] = "#{@survey.title} created."
-        @breadcrumb = @survey
         format.html { redirect_to survey_path(@survey) }
       else
-        @breadcrumb = @survey
         format.html { render :new }
       end
     end
@@ -51,10 +46,8 @@ class SurveysController < ApplicationController
     respond_to do |format|
       if @survey.update_attributes(params[:survey])
         flash[:notice] = "#{@survey.title} updated."
-        @breadcrumb = @survey
         format.html { redirect_to survey_path(@survey) }
       else
-        @breadcrumb = @survey
         format.html { render :edit }
       end
     end
@@ -62,7 +55,6 @@ class SurveysController < ApplicationController
 
   def destroy
     @survey.destroy
-    @breadcrumb = @survey
     respond_to do |format|
       flash[:notice] = "Survey deleted."
       format.html { redirect_to surveys_path }
@@ -70,7 +62,6 @@ class SurveysController < ApplicationController
   end
 
   def confirm_delete
-    @breadcrumb = @survey
     respond_to do |format|
       format.html
     end
@@ -80,6 +71,10 @@ class SurveysController < ApplicationController
   
     def retrieve_survey
       @survey = @user.surveys.find(params[:id])
+    end
+    
+    def set_breadcrumb
+      @breadcrumb = @survey
     end
 
 end

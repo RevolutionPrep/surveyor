@@ -46,3 +46,4 @@ end
 ActiveSupport::XmlMini.backend = "Nokogiri"
 
 require "string_extensions"
+require "before_render"
