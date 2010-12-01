@@ -20,7 +20,7 @@
         <td><%= link_to h(survey.title).nobr, survey_path(survey) %></td>
         <td><%=h survey.description %></td>
         <td><%=h survey.updated_at.strftime('%D') %></td>
-        <td><%#= link_to "Reports", report_path(survey) %></td>
+        <td><%= link_to "View reports".nobr.html_safe, report_path(survey) %></td>
       </tr>
     <% end %>
   </table>

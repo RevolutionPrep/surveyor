@@ -66,6 +66,8 @@ module NavigationHelpers
     #------- REPORTS -------#
   when /the reports index page/
     reports_path
+  when /the reports show page/
+    report_path(User.first.surveys.first)
 
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
