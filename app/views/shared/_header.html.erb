@@ -1,0 +1,13 @@
+<div class="container_16">
+  <h1><%= link_to "Surveyor", root_url %></h1>
+  <% if current_user %>
+    <%- if current_user.username == "Admin" %>
+      <%= link_to "Create New User", new_user_path %>
+    <%- end %>
+    <%= link_to "Logout", logout_path, :class => "right" %>
+    <%= link_to "Edit Profile", edit_user_path(:current), :class => "right" %>
+    <span class="right"><%= current_user.username %></span>
+  <% end %>
+  <%= render :partial => "shared/flash_messages" %>
+  <div class="clearfix"></div>
+</div>

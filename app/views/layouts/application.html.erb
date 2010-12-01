@@ -21,19 +21,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
   <div id="container">
     <header>
-      <div class="container_16">
-        <h1><%= link_to "Surveyor", root_url %></h1>
-        <% if current_user %>
-          <%- if current_user.username == "Admin" %>
-            <%= link_to "Create New User", new_user_path %>
-          <%- end %>
-          <%= link_to "Logout", logout_path, :class => "right" %>
-          <%= link_to "Edit Profile", edit_user_path(:current), :class => "right" %>
-          <span class="right"><%= current_user.username %></span>
-        <% end %>
-        <%= render :partial => "shared/flash_messages" %>
-        <div class="clearfix"></div>
-      </div>
+      <%= render :partial => "shared/header" %>
     </header>
     
     <div id="main">
@@ -48,10 +36,7 @@
     </div>
     
     <footer>
-      <div class="container_16">
-        <span class="copyright">&copy;2010 Revolution Prep</span>
-      </div>
-      <div class="clearfix"></div>
+      <%= render :partial => "shared/footer" %>
     </footer>
   </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
