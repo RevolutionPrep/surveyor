@@ -252,8 +252,8 @@ header span {
 }
 
 header div.flash {
-  background: #36495E;
-  border-top: 3px solid #FFF;
+  background: #537091;
+  border-top: 3px solid #36495E;
   color: #FFF;
   cursor: pointer;
   position: absolute;
