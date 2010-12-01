@@ -104,6 +104,8 @@ ActiveRecord::Schema.define(:version => 20101201183800) do
     t.string   "set_key"
   end
 
+  add_index "survey_results", ["set_key", "survey_id"], :name => "index_survey_results_on_set_key_and_survey_id"
+  add_index "survey_results", ["survey_id", "set_key"], :name => "index_survey_results_on_survey_id_and_set_key"
   add_index "survey_results", ["survey_id"], :name => "index_survey_results_on_survey_id"
   add_index "survey_results", ["user_id"], :name => "index_survey_results_on_user_id"
 
