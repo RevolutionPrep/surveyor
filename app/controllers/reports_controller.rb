@@ -3,7 +3,10 @@ class ReportsController < ApplicationController
   before_filter :retrieve_user
   
   def index
-    @surveys = @user.surveys
+    with_placeholder do
+      @surveys = @user.surveys
+      render :index
+    end
   end
   
 end

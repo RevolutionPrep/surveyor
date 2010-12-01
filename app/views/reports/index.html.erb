@@ -1,15 +1,27 @@
-<h2>Reports are coming!</h2>
-<p>
-  This feature is being built out as you read this.  The new reports page will allow you to view reports for sets of surveys from within Surveyor itself.
-</p>
-<br />
-<p>
-  We are working hard to get you the features that will help you to do your job better:
-  <br />
-  <ul>
-    <li>Report sets</li>
-    <li>Individual survey results</li>
-    <li>More comprehensive analysis</li>
-    <li>PDF report generation</li>
-  </ul>
-</p>
+<h2>Reports</h2>
+<div class="subhead">
+  These are your surveys. Pick one to view its reports.
+</div>
+
+<% if @surveys.empty? %>
+  <div class="module">
+    <em>You don't have any current surveys.  You can add surveys by clicking 'Surveys' to the left, then clicking 'Create a survey' above.</em>
+  </div>
+<% else %>
+  <table class="default">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th class="action"><nobr>Last Updated</nobr></th>
+      <th class="action">&nbsp;</th>
+    </tr>
+    <% @surveys.each do |survey| %>
+      <tr>
+        <td><%= link_to h(survey.title).nobr, survey_path(survey) %></td>
+        <td><%=h survey.description %></td>
+        <td><%=h survey.updated_at.strftime('%D') %></td>
+        <td><%#= link_to "Reports", report_path(survey) %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
