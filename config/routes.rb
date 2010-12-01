@@ -48,6 +48,8 @@ Surveyor::Application.routes.draw do
       get 'confirm_delete'
     end
   end
+  
+  resources :reports
 
   # ActiveResource API
   namespace :api do |api|

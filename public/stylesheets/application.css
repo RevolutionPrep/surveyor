@@ -352,8 +352,6 @@ dl.split_90_10 dt { width: 86%; }
 dl.split_90_10 dd { width: 10%; }
 
 ul {
-  list-style: none;
-  margin: 0;
   padding: 5px;
 }
 
@@ -363,6 +361,11 @@ ul li {
 
 ul li:first-child {
   margin-top: 0;
+}
+
+ul.unstyled {
+  margin: 0;
+  list-style: none;
 }
 
 nav ul li {

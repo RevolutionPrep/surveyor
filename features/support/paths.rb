@@ -62,6 +62,10 @@ module NavigationHelpers
     #------- COMPONENTS -------#
     when /the component confirm delete page/
       confirm_delete_component_path(User.first.components.first)
+    
+    #------- REPORTS -------#
+  when /the reports index page/
+    reports_path
 
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
