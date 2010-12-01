@@ -223,9 +223,15 @@ header div.container_16 {
 }
 
 header h1 {
-  font-size: 60px;
   display: inline;
+  font-size: 60px;
   text-shadow: 1px 1px 0px #FFF;
+}
+
+header h1 a, header h1 a:link, header h1 a:active, header h1 a:visited, header h1 a:hover {
+  color: #444;
+  text-decoration: none;
+  border-bottom: none;
 }
 
 header a, header a:link, header a:active, header a:visited {

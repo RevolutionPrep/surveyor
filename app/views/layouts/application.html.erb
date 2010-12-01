@@ -22,7 +22,7 @@
   <div id="container">
     <header>
       <div class="container_16">
-        <h1>Surveyor</h1>
+        <h1><%= link_to "Surveyor", root_url %></h1>
         <% if current_user %>
           <%- if current_user.username == "Admin" %>
             <%= link_to "Create New User", new_user_path %>
