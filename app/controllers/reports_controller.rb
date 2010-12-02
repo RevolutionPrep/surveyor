@@ -12,6 +12,7 @@ class ReportsController < ApplicationController
   def show
     with_placeholder do
       @survey = @user.surveys.find(params[:id])
+      @survey_results = @survey.survey_results
       render :show
     end
   end

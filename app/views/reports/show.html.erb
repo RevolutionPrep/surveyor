@@ -10,12 +10,12 @@
   </tr>
     <tr>
       <td>Individual Results</td>
-      <td><%= @survey.survey_results.count %></td>
+      <td><%= @survey_results.length %></td>
       <td><%= link_to "View", "#" %></td>
     </tr>
     <tr>
       <td>Sets</td>
-      <td><%= @survey.survey_results.collect(&:set_key).uniq.count %></td>
+      <td><%= @survey_results.collect(&:set_key).uniq.count %></td>
       <td><%= link_to "View", "#" %></td>
     </tr>
 </table>
