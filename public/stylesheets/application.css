@@ -232,6 +232,8 @@ header h1 a, header h1 a:link, header h1 a:active, header h1 a:visited, header h
   color: #444;
   text-decoration: none;
   border-bottom: none;
+  margin-left: 0;
+  padding: 0;
 }
 
 header a, header a:link, header a:active, header a:visited {
@@ -371,6 +373,11 @@ ul li:first-child {
 }
 
 ul.unstyled {
+  margin: 0;
+  list-style: none;
+}
+
+nav ul {
   margin: 0;
   list-style: none;
 }
