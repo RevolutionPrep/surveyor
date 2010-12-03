@@ -1,0 +1,11 @@
+<h2>Results</h2>
+<div class="subhead">
+  These are your individual results for <%= @survey.title %>
+</div>
+
+<table class="default">
+  <tr><th>Header</th></tr>
+  <%- @survey_results.each do |survey_result| %>
+    <tr><td>Data</td></tr>
+  <%- end %>
+</table>
