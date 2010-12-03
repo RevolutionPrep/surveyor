@@ -5,7 +5,7 @@ gem 'mysql', '>=2.8.1'
 
 gem 'authlogic',        :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 gem 'hoptoad_notifier', '>=2.3.11'
-gem 'nokogiri',         '>=1.4.3.1'
+gem 'nokogiri',         '>=1.4.4'
 
 # Deployment
 gem 'capistrano'
