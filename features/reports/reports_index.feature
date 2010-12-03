@@ -4,7 +4,7 @@ Feature: Reports index
   as a user,
   I want to be able to view a reports index
 
-Scenario: Create a Valid Survey
+Scenario: View reports index
   Given there is a user named "Ryan" with password "password"
   And I log in as "Ryan" with password "password"
   And I create a survey with title "Survey Title" and description "Survey Description"

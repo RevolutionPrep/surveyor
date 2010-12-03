@@ -3,8 +3,8 @@ Feature: Reports for survey
   In order to see an overview of reports provided for a specific survey,
   as a user,
   I want to be able to view a list of the types of reports available for this survey
-@focus
-Scenario: Create a Valid Survey
+
+Scenario: View results types for a survey
   Given there is a user named "Ryan" with password "password"
   And I log in as "Ryan" with password "password"
   And I create a survey with title "Survey Title" and description "Survey Description"

@@ -49,7 +49,9 @@ Surveyor::Application.routes.draw do
     end
   end
   
-  resources :reports
+  resources :reports, :only => [:index, :show] do
+    resources :results, :only => [:index]
+  end
 
   # ActiveResource API
   namespace :api do |api|

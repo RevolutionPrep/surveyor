@@ -64,10 +64,14 @@ module NavigationHelpers
       confirm_delete_component_path(User.first.components.first)
     
     #------- REPORTS -------#
-  when /the reports index page/
-    reports_path
-  when /the reports show page/
-    report_path(User.first.surveys.first)
+    when /the reports index page/
+      reports_path
+    when /the reports show page/
+      report_path(User.first.surveys.first)
+  
+    #------- RESULTS -------#
+    when /the results index page/
+      report_results_path(User.first.surveys.first)
 
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
